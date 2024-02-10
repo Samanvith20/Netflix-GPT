@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { BG_URL } from '../utils/Constants';
+import Header from './Header';
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -12,7 +14,9 @@ const Login = () => {
   };
 
   return (
+    
     <div className="relative">
+      <Header/>
       <div className="absolute">
         <img src={BG_URL} alt="netflix-bg" className="object-cover w-full h-full" />
       </div>
