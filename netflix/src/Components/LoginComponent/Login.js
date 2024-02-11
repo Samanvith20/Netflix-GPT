@@ -1,18 +1,35 @@
 import React, { useState } from 'react';
 import { BG_URL } from '../utils/Constants';
 import Header from './Header';
-
+import Validation from './Formvalidation';
+import {useNavigate}from "react-router-dom"
+import { handlesignin, handlesignup } from './Handlingfile';
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [signinform, setSignInform] = useState(true);
   const [name, setName] = useState("");
+  const [Message,setErrorMessage]=useState("")
+  //console.log(Message);
 
   const handleSignInform = () => {
     setSignInform(!signinform);
   };
+   const navigate= useNavigate()
+   const handleSubmitform=(e)=>{
+    e.preventDefault()
+   const message=Validation(name,email,password)
+   setErrorMessage(message)
+  if(message) return
+      if(!signinform){
+        handlesignup(email,password,name,setErrorMessage,navigate)
 
+      } else{
+        handlesignin(email,password,setErrorMessage,navigate)
+      }
+ 
+   }
   return (
     
     <div className="relative">
@@ -48,7 +65,8 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="py-4 my-6 bg-red-700 w-full rounded-lg">
+          <p className="text-red-500 font-bold text-lg py-2">{Message}</p>
+        <button className="py-4 my-6 bg-red-700 w-full rounded-lg" onClick={handleSubmitform} type="submit">
           {signinform ? "Sign In" : "Sign Up"}
         </button>
         <p className="py-4 cursor-pointer text-center" onClick={handleSignInform}>
