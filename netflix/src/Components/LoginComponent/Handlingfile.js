@@ -1,21 +1,24 @@
-import { auth } from '../utils/Firebase';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "../utils/Firebase";
 
 const handlesignup = (email, password, name, setErrorMessage, navigate) => {
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
-            //console.log(user);
             updateProfile(user, {
                 displayName: name,
             }).then(() => {
                 navigate("/browse");
             }).catch((error) => {
-                setErrorMessage(error.code + "-" + error.message);
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                setErrorMessage(errorCode + "-" + errorMessage);
             });
         })
         .catch((error) => {
-            setErrorMessage(error.code + "-" + error.message);
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            setErrorMessage(errorCode + "-" + errorMessage);
         });
 }
 
@@ -23,12 +26,12 @@ const handlesignin = (email, password, navigate, setErrorMessage) => {
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
-            //console.log(user);
             navigate("/browse");
         })
         .catch((error) => {
-            setErrorMessage(error.code + "-" + error.message);
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            setErrorMessage(errorCode + "-" + errorMessage);
         });
 }
-
-export { handlesignup, handlesignin };
+ export {handlesignin,handlesignup}

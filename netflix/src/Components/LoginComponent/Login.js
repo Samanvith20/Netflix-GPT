@@ -17,23 +17,23 @@ const Login = () => {
     setSignInform(!signinform);
   };
    const navigate= useNavigate()
-   const handleSubmitform=(e)=>{
-    e.preventDefault()
-   const message=Validation(name,email,password)
-   setErrorMessage(message)
-  if(message) return
-      if(!signinform){
-        handlesignup(email,password,name,setErrorMessage,navigate)
+   
+const handleSubmitform = (e) => {
+  e.preventDefault();
+  const message = Validation(name, email, password);
+  setErrorMessage(message);
+  if (message) return;
+  if (!signinform) {
+      handlesignup(email, password, name, setErrorMessage, navigate);
+  } else {
+      handlesignin(email, password, navigate, setErrorMessage);
+  }
+}
 
-      } else{
-        handlesignin(email,password,setErrorMessage,navigate)
-      }
- 
-   }
   return (
     
     <div className="relative">
-      <Header/>
+      <Header toggleform={handleSignInform} showsigninform={signinform}/>
       <div className="absolute">
         <img src={BG_URL} alt="netflix-bg" className="object-cover w-full h-full" />
       </div>

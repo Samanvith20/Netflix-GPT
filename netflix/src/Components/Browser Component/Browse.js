@@ -1,9 +1,10 @@
 import React from 'react'
+import Header from '../LoginComponent/Header'
 
 const Browse = () => {
   return (
     <div>
-      Browse page
+      <Header/>
     </div>
   )
 }
