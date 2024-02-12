@@ -52,7 +52,7 @@ const Header = ({ toggleform, showsigninform }) => {
       <div className="absolute px-8 py-2 w-full bg-gradient-to-b from-black z-10 flex justify-between">
          <img src={LOGO} alt="netflix" className="w-44" />
          <div className="flex p-2">
-            {user ? (
+            {user ? ( 
                <>
                   <div className="flex justify-center items-center flex-row lg:gap-2 gap-0.5 sm:gap-1">
                      <h1 className='  text-2xl font-bold space-x-5 mr-7 text-white'>Welcome {user.displayName}</h1>
