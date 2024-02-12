@@ -4,3 +4,10 @@ export const LOGO =
   "https://assets.nflxext.com/ffe/siteui/vlv3/fc164b4b-f085-44ee-bb7f-ec7df8539eff/d23a1608-7d90-4da1-93d6-bae2fe60a69b/IN-en-20230814-popsignuptwoweeks-perspective_alpha_website_large.jpg";
   export const USER_IMAGE=
    "https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg"
+   export const OPTIONS = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YTQwNTc3MmNhZDhkMGExYmNkZjNiNWU2ZTk2MTA2OSIsInN1YiI6IjY1MzllNzc3MDkxZTYyMDEzOGI0MTllOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.zTjvj2ToSDcsacoesI53grp13OGcSoPY9OAwPcvjyWo'
+    }
+  };

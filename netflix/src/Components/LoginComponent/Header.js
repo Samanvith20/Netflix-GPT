@@ -27,7 +27,7 @@ const Header = ({ toggleform, showsigninform }) => {
    };
 
    useEffect(() => {
-      onAuthStateChanged(auth, (user) => {
+      const unsubscribe= onAuthStateChanged(auth, (user) => {
         if (user) {
           const { email, password, displayName } = user;
           const uid = user.uid;
@@ -45,6 +45,7 @@ const Header = ({ toggleform, showsigninform }) => {
           navigate('/');
         }
       });
+       return ()=>unsubscribe()
     }, []);
 
    return (
