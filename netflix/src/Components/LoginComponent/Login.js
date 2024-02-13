@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BG_URL } from '../utils/Constants';
+import { BG_IMAGE,  } from '../utils/Constants';
 import Header from './Header';
 import Validation from './Formvalidation';
 import {useNavigate}from "react-router-dom"
@@ -35,7 +35,7 @@ const handleSubmitform = (e) => {
     <div className="relative">
       <Header toggleform={handleSignInform} showsigninform={signinform}/>
       <div className="absolute">
-        <img src={BG_URL} alt="netflix-bg" className="object-cover w-full h-full" />
+        <img src={BG_IMAGE} alt="netflix-bg" className="object-cover w-full h-full" />
       </div>
       <form
         className="absolute w-full md:w-3/12 p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80"

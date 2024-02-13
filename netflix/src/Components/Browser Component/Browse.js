@@ -7,6 +7,9 @@ import useUpComingmovies from '../utils/CustomHooks/useUpComingMovies'
 import MainContainer from './MainContainer'
 import SecondaryContainer from './SecondaryContainer'
 import useTvShows from '../utils/CustomHooks/useTvShows'
+import GptSearchPage from '../Gpt Component/GptSearchPage'
+import { useSelector } from 'react-redux'
+import GPTSearchPage from '../Gpt Component/GptSearchPage'
 
 
 const Browse = () => {
@@ -15,12 +18,18 @@ const Browse = () => {
   useTopRatedMovies()
   useUpComingmovies()
   useTvShows()
-  
+  const gptview = useSelector((store) => store.gpt.gptSearchView);
   return (
-    <div>
-      <Header/>
-      <MainContainer/>
-      <SecondaryContainer/>
+    <div className="text-white w-screen">
+      <Header />
+      {gptview ? (
+        <GPTSearchPage />
+      ) : (
+        <>
+          <MainContainer />
+          <SecondaryContainer />
+        </>
+      )}
     </div>
   )
 }

@@ -18,7 +18,8 @@ const Body = () => {
     {
       path: "/movie/:id",
       element:<Movies/>
-    }
+    },
+    
 ])
   return (
     <div>

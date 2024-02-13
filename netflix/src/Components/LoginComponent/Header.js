@@ -3,12 +3,14 @@ import React, { useEffect } from 'react';
 import { LOGO, USER_IMAGE } from '../utils/Constants'; 
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from '../utils/Firebase';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector,  } from 'react-redux';
 import { addUser, removeUser } from '../utils/Store/userSlice';
 import { useNavigate } from 'react-router-dom';
+import { addToggle } from '../utils/Store/GptSlice';
 
 const Header = ({ toggleform, showsigninform }) => {
    const user = useSelector((store) => store.user);
+   const gptview=useSelector((store)=>store?.gpt?.gptSearchView)
    
    const dispatch = useDispatch();
    const navigate = useNavigate();
@@ -25,6 +27,9 @@ const Header = ({ toggleform, showsigninform }) => {
             console.error("Sign out error:", error);
          });
    };
+   const  searchTogglefunction =()=>{
+      dispatch(addToggle())
+    }
 
    useEffect(() => {
       const unsubscribe= onAuthStateChanged(auth, (user) => {
@@ -59,6 +64,13 @@ const Header = ({ toggleform, showsigninform }) => {
           <h2 className="my-5 md:my-7 md:font-semibold text-white mr-4">
                Hello {user.displayName}
             </h2>
+            {
+               gptview &&(
+               <button className='text-white p-2 mx-2 my-2 bg-blue-800 mr-5'onClick={searchTogglefunction}>
+               {gptview ? "Homepage" : "GPT Search"}
+                 </button>
+               )
+            }
             <img
               className=" hidden md:block w-12 m-4 rounded-md"
               src={USER_IMAGE}
