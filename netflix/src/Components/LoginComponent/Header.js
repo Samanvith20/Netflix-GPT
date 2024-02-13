@@ -54,13 +54,25 @@ const Header = ({ toggleform, showsigninform }) => {
          <div className="flex p-2">
             {user ? ( 
                <>
-                  <div className="flex justify-center items-center flex-row lg:gap-2 gap-0.5 sm:gap-1">
-                     <h1 className='  text-2xl font-bold space-x-5 mr-7 text-white'>Welcome {user.displayName}</h1>
-                     <img className="w-12 h-12" alt="usericon" src={USER_IMAGE} />
-                     <button onClick={handleSignOut} className="font-bold text-white">
-                        (Sign Out)
-                     </button>
-                  </div>
+                  <div className="">
+          <div className="flex space-x-3" >
+          <h2 className="my-5 md:my-7 md:font-semibold text-white mr-4">
+               Hello {user.displayName}
+            </h2>
+            <img
+              className=" hidden md:block w-12 m-4 rounded-md"
+              src={USER_IMAGE}
+              alt="userIcon"
+            />
+            <button
+              className="p-2 m-2 md:font-semibold text-white ml-0"
+              onClick={handleSignOut}
+            >
+              Sign Out
+            </button>
+            
+          </div>
+        </div>
                </>
             ) : (
                <>
