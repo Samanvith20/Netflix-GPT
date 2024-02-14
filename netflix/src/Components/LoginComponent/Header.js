@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { LOGO, USER_IMAGE } from '../utils/Constants'; 
 import { onAuthStateChanged, signOut } from 'firebase/auth';
@@ -60,24 +59,26 @@ const Header = ({ toggleform, showsigninform }) => {
             {user ? ( 
                <>
                   <div className="">
-          <div className="flex space-x-3" >
+          <div className="flex p-2 justify-between" >
           <h2 className="my-5 md:my-7 md:font-semibold text-white mr-4">
                Hello {user.displayName}
             </h2>
             {
-               gptview &&(
-               <button className='text-white p-2 mx-2 my-2 bg-blue-800 mr-5'onClick={searchTogglefunction}>
-               {gptview ? "Homepage" : "GPT Search"}
-                 </button>
+               gptview ?(
+                  <button className='text-white p-2 mx-2 my-2 bg-blue-800 mr-5 ml-5'onClick={searchTogglefunction}>
+                     Homepage
+                  </button>
+               ):(
+                  <button className='text-white p-2 mx-2 my-2 bg-blue-800 mr-5'onClick={searchTogglefunction}>
+                     GPT Search
+                  </button>
                )
+         
             }
-            <img
-              className=" hidden md:block w-12 m-4 rounded-md"
-              src={USER_IMAGE}
-              alt="userIcon"
-            />
+         
+            
             <button
-              className="p-2 m-2 md:font-semibold text-white ml-0"
+              className="p-2 m-2 md:font-semibold text-white bg-red-700 rounded-md"
               onClick={handleSignOut}
             >
               Sign Out
