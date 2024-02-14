@@ -21,14 +21,14 @@ const GptResult = () => {
     );
   }
   return (
-    <div className="xl:px-16 md:px-8 sm:px-4 px-1.5 lg:px-12">
-    {movieNames?.map((movieName, index) => (
-      <MovieList
-        key={movieName}
-        title={movieName}
-        movie={movieResults?.[index]?.results}
-      />
-    ))}
+    <div className="xl:px-16 bg-opacity-90 md:px-8 sm:px-4 px-1.5 lg:px-12 ">
+    {movieNames.map((movieName, index) => (
+          <MovieList
+            key={movieName}
+            title={movieName}
+            movies={movieResults?.[index]?.results}
+          />
+        ))}
   </div>
     
   )
