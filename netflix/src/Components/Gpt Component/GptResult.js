@@ -8,7 +8,7 @@ const GptResult = () => {
   //console.log(movieResults);
   if(!movieNames&&!movieResults){
     return (
-      <div className="h-1/12 xl:pt-2 md:pt-8 sm:pt-16 pt-20 w-12/12 flex gap-4 justify-center flex-col items-center">
+      <div className="h-3/12 xl:pt-2 md:pt-8 sm:pt-16 pt-20 w-12/12 flex gap-4 justify-center flex-col items-center">
         <img
           className="xl:w-80 md:w-72 sm:w-64 w-52 lg:w-80"
           src={SEARCH_IMAGE}

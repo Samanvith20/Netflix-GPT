@@ -2,15 +2,16 @@ import React, { useRef } from 'react';
 
 import {   OPTIONS } from '../utils/Constants';
 import Shimmer from '../ShimmerComponent/Shimmer'
-import { useDispatch  } from 'react-redux';
+import { useDispatch, useSelector  } from 'react-redux';
 import { addmovieInfo } from '../utils/Store/GptSlice';
 import openai from '../utils/openai';
+import {translations} from '../utils/languageConstants';
 
 const GptSearch = () => {
   const input = useRef();
   //console.log(input);
   const dispatch=useDispatch() 
-
+ const langkey=useSelector((store)=>store?.language?.lang)
   const tmdbMovieSearch = async (movie) => {
     const data = await fetch(
       "https://api.themoviedb.org/3/search/movie?query=" +
@@ -57,13 +58,13 @@ const GptSearch = () => {
           ref={input}
           type="text"
           className="p-4 m-4 col-span-9 text-black"
-          placeholder="Search any type of movie you want?"
+          placeholder={translations[langkey].gptSearchPlaceholder}
         />
         <button
           className="col-span-3 m-4 py-2 px-4 bg-red-700 text-white rounded-lg"
           onClick={handleGPTSearch}
         >
-          Search
+          {translations[langkey].search}
         </button>
       </form>
     </div>

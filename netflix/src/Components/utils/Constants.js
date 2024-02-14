@@ -13,5 +13,11 @@ export const LOGO =
   };
   export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500"
  // export const OPENAI_KEY = process.env.REACT_APP_OPENAI_API_KEY;
-
-  export const SEARCH_IMAGE="https://keywordtool.io/images/svg/undraw_web_search_eetr.svg"
+export const SEARCH_IMAGE="https://keywordtool.io/images/svg/undraw_web_search_eetr.svg"
+export const SUPPORTED_LANGUAGES = [
+  { identifier: "en", name: "English" },
+  { identifier: "hindi", name: "Hindi" },
+  { identifier: "spanish", name: "Spanish" },
+  {identifier:"telugu",name:"Telugu"},
+  {identifier:"french",name:"French"}
+];
