@@ -4,6 +4,7 @@ import Login from '../LoginComponent/Login'
 import Browse from '../Browser Component/Browse'
 
 import Movies from '../Browser Component/Movies'
+import MovieDetails from '../Browser Component/MovieDetails'
 
 const Body = () => {
     const appRouter=  createBrowserRouter([
@@ -19,6 +20,10 @@ const Body = () => {
       path: "/movie/:id",
       element:<Movies/>
     },
+    {
+      path:"/detail",
+      element:<MovieDetails />
+    }
     
 ])
   return (

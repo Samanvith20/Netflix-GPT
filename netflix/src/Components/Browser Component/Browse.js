@@ -7,9 +7,10 @@ import useUpComingmovies from '../utils/CustomHooks/useUpComingMovies'
 import MainContainer from './MainContainer'
 import SecondaryContainer from './SecondaryContainer'
 import useTvShows from '../utils/CustomHooks/useTvShows'
-import GptSearchPage from '../Gpt Component/GptSearchPage'
-import { useSelector } from 'react-redux'
+
+import { useDispatch, useSelector } from 'react-redux'
 import GPTSearchPage from '../Gpt Component/GptSearchPage'
+import { removemovieInfo } from '../utils/Store/GptSlice'
 
 
 const Browse = () => {
@@ -18,7 +19,11 @@ const Browse = () => {
   useTopRatedMovies()
   useUpComingmovies()
   useTvShows()
+  const dispatch=useDispatch()
   const gptview = useSelector((store) => store.gpt.gptSearchView);
+  if(!gptview){
+    dispatch(removemovieInfo())
+  }
   return (
     <div className="text-white w-screen">
       <Header />

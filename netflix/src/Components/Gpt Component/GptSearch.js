@@ -9,6 +9,7 @@ import {translations} from '../utils/languageConstants';
 
 const GptSearch = () => {
   const input = useRef();
+  
   //console.log(input);
   const dispatch=useDispatch() 
  const langkey=useSelector((store)=>store?.language?.lang)
@@ -23,8 +24,6 @@ const GptSearch = () => {
     return json;
   };
   const handleGPTSearch = async () => {
-    
-
     const gptSearch =
       "Act as a movie recommendation system and suggest some movies for the query " +
       input.current.value +
@@ -42,6 +41,7 @@ const GptSearch = () => {
         const movieresult= await Promise.all(movieSearch);
         //console.log(movieSearch);
        dispatch(addmovieInfo({movieName:gptMovies, movieResults:movieresult}))
+       input.current.value =""
 
     } catch (error) {
       console.error("GPT search error:", error);
@@ -63,6 +63,7 @@ const GptSearch = () => {
         <button
           className="col-span-3 m-4 py-2 px-4 bg-red-700 text-white rounded-lg"
           onClick={handleGPTSearch}
+          
         >
           {translations[langkey].search}
         </button>

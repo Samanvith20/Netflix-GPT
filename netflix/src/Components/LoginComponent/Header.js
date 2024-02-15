@@ -81,15 +81,23 @@ const Header = ({ toggleform, showsigninform }) => {
                       </option>
                     ))}
                   </select>
-                
-                  {gptview && (
-                <button
-                  className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg"
-                  onClick={handleGptSearchClick}
-                >
-                  {gptview ? language[lang].homepage : language[lang].gptsearch}
-                  </button>
-                  )}
+                  {gptview ? (
+                 <button
+          className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg"
+            onClick={handleGptSearchClick}
+                    >
+            {language[lang].homepage}
+              </button>
+         ) : (
+         <button
+         className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg"
+      onClick={handleGptSearchClick}
+       >
+         {language[lang].gptsearch}
+       </button>
+)}
+
+                 
           </div>
               <button
                 className="py-2 px-4 mx-4 my-2 bg-red-800 text-white rounded-lg"

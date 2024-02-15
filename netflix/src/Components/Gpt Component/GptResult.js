@@ -2,11 +2,18 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import MovieList from "../Browser Component/MovieList"
 import { SEARCH_IMAGE } from '../utils/Constants'
+import Shimmer from '../ShimmerComponent/Shimmer'
 
 const GptResult = () => {
-  const {movieNames,movieResults}=useSelector((store)=>store.gpt)
-  //console.log(movieResults);
-  if(!movieNames&&!movieResults){
+  const { movieNames, movieResults } = useSelector((store) => store.gpt);
+
+ 
+  if (!movieNames && !movieResults) {
+    return <Shimmer />;
+  }
+
+  // Check if both movieNames and movieResults are not present
+  if (!movieNames && !movieResults) {
     return (
       <div className="h-3/12 xl:pt-2 md:pt-8 sm:pt-16 pt-20 w-12/12 flex gap-4 justify-center flex-col items-center">
         <img
@@ -20,18 +27,18 @@ const GptResult = () => {
       </div>
     );
   }
+
   return (
-    <div className="xl:px-16 bg-opacity-90 md:px-8 sm:px-4 px-1.5 lg:px-12 ">
-    {movieNames.map((movieName, index) => (
-          <MovieList
-            key={movieName}
-            title={movieName}
-            movies={movieResults?.[index]?.results}
-          />
-        ))}
-  </div>
-    
-  )
+    <div className="xl:px-16 p-4 m-4 text-white bg-opacity-90 md:px-8 sm:px-4 px-1.5 lg:px-12 ">
+      {movieNames.map((movieName, index) => (
+        <MovieList
+          key={movieName}
+          title={movieName}
+          movies={movieResults?.[index]?.results}
+        />
+      ))}
+    </div>
+  );
 }
 
-export default GptResult
+export default GptResult;
