@@ -17,7 +17,7 @@ const MovieCard = ({ poster , title,MovieDetails}) => {
       <img className="w-full rounded-lg" src={IMG_CDN_URL + poster} alt="Loading.." />
       <Link to={"/detail"} className="absolute top-0 right-0">
         <button   onClick={handleButtonClick} 
-         className="bg-black text-yellow-600 hover:bg-yellow-600 hover:text-white p-1 px-4 rounded-2xl text-sm">
+         className="bg-black text-white-600 hover:bg-yellow-600 hover:text-white p-1 px-4 rounded-2xl text-sm">
           i
         </button>
       </Link>

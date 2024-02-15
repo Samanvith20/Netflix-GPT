@@ -9,7 +9,7 @@ const movieSlice=createSlice({
       UpComingMovies:null,
       TrailerPlayingVideo:null,
       movieDetails:null,
-      tvShows:null,
+      
       movieCharacters:null,
       movieInfoview:false
     },
@@ -31,9 +31,7 @@ const movieSlice=createSlice({
           state.TrailerPlayingVideo=action.payload
         },
        
-        addTvShows:(state,action)=>{
-          state.tvShows=action.payload
-        },
+        
         addMovieDetails:(state,action)=>{
           state.movieDetails=action.payload
         },
@@ -45,5 +43,5 @@ const movieSlice=createSlice({
         }
     }
 })
- export const {addmovies,addpopular,addRatedmovies, addNewvideos,addTrailerVideo,addTvShows,addMovieDetails,addMovieCharacter,addToogle}=movieSlice.actions
+ export const {addmovies,addpopular,addRatedmovies, addNewvideos,addTrailerVideo,addMovieDetails,addMovieCharacter,addToogle}=movieSlice.actions
  export default movieSlice.reducer

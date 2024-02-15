@@ -83,14 +83,14 @@ const Header = ({ toggleform, showsigninform }) => {
                   </select>
                   {gptview ? (
                  <button
-          className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg"
+          className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg sm:text-sm w-auto"
             onClick={handleGptSearchClick}
                     >
             {language[lang].homepage}
               </button>
          ) : (
          <button
-         className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg"
+         className="py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg sm:text-sm w-auto"
       onClick={handleGptSearchClick}
        >
          {language[lang].gptsearch}
@@ -99,12 +99,14 @@ const Header = ({ toggleform, showsigninform }) => {
 
                  
           </div>
-              <button
-                className="py-2 px-4 mx-4 my-2 bg-red-800 text-white rounded-lg"
-                onClick={handleSignOut}
-              >
-                {language[lang].Signout}
-              </button>
+          <button
+  className="text-white bg-red-800 rounded-md p-1 md:p-2 m-1 md:m-2 md:text-sm font-normal hover:opacity-80 py-0.5 px-1 mr-0.5"
+  onClick={handleSignOut}
+>
+  {language[lang].Signout}
+</button>
+
+
             </div>
           </div>
         ) : (

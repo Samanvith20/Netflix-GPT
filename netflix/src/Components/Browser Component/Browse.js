@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../LoginComponent/Header';
 import useNowplayingmovies from '../utils/CustomHooks/useNowplayingmovies';
 import usePopularmovies from '../utils/CustomHooks/usePopularMovies';
@@ -6,33 +6,35 @@ import useTopRatedMovies from '../utils/CustomHooks/useTopRatedMovies';
 import useUpComingmovies from '../utils/CustomHooks/useUpComingMovies';
 import MainContainer from './MainContainer';
 import SecondaryContainer from './SecondaryContainer';
-import useTvShows from '../utils/CustomHooks/useTvShows';
+
 
 import { useDispatch, useSelector } from 'react-redux';
 import GPTSearchPage from '../Gpt Component/GptSearchPage';
 import { removemovieInfo } from '../utils/Store/GptSlice';
-import MovieDetails from "../Browser Component/MovieDetails"
+
 
 const Browse = () => {
   useNowplayingmovies();
   usePopularmovies();
   useTopRatedMovies();
   useUpComingmovies();
-  useTvShows();
+  
   const dispatch = useDispatch();
   const gptview = useSelector((store) => store.gpt.gptSearchView);
-  const movieInfo = useSelector((store) => store?.movies?.movieInfoview);
-  if (!gptview) {
-    dispatch(removemovieInfo());
-  }
+  
+  // useEffect hook to dispatch removemovieInfo action when gptview changes
+  useEffect(() => {
+    if (!gptview) {
+      dispatch(removemovieInfo());
+    }
+  }, [gptview]);
+
+ 
   return (
     <div className="text-white w-screen">
       <Header />
       {gptview ? (
-      
-          <GPTSearchPage />
-         
-        
+        <GPTSearchPage />
       ) : (
         <>
           <MainContainer />
