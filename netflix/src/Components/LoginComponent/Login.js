@@ -6,7 +6,10 @@ import {useNavigate}from "react-router-dom"
 import { handlesignin, handlesignup } from './Handlingfile';
 import { useSelector } from 'react-redux';
 import { language } from '../utils/languageConstants';
-
+import { auth } from '../utils/Firebase';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,6 +34,20 @@ const handleSubmitform = (e) => {
       handlesignin(email, password, navigate, setErrorMessage);
   }
 }
+ const loginWithGoogle=()=>{
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+  
+    }).catch((error) => {
+     
+      const errorMessage = error.message;
+    
+      setErrorMessage(errorMessage)
+    });
+ }
 
   return (
     
@@ -72,6 +89,8 @@ const handleSubmitform = (e) => {
         <button className="py-4 my-6 bg-red-700 w-full rounded-lg" onClick={handleSubmitform} type="submit">
           {signinform ? language[lang].SignIn :language[lang].Signup}
         </button>
+        
+        <p className="text-white bg-red-700 m-2   font-bold p-2 hover:bg-black cursor-pointer " onClick={()=>loginWithGoogle(auth)}> <FontAwesomeIcon icon={faGlobe}></FontAwesomeIcon> sign in with google</p>
         <p className="py-4 cursor-pointer text-center" onClick={handleSignInform}>
           {signinform ?  language[lang].NewtoNetflix  : language[lang].alreadyAcc}
         </p>

@@ -1,15 +1,15 @@
 import  { useEffect } from 'react'
 import { OPTIONS } from '../Constants'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, } from 'react-redux'
 import { addTrailerVideo } from '../Store/movieSlice'
 
 const useTrailerplayingvideos = (movieId) => {
-    const Trailervideo=useSelector((store)=>store?.movies?.TrailerPlayingVideo)
+    
      const dispatch=useDispatch()
   useEffect(()=>{
-    if(!Trailervideo){
+  
     fetchdata()
-    }
+    
   },[])
    const fetchdata=async()=>{
     try {

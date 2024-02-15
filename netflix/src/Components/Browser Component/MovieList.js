@@ -11,6 +11,7 @@ const MovieList = ({ title, movies }) => {
           {movies?.map((movie) => (
             <Link to ={"/movie/" + movie?.id} key={movie?.id}>
               <MovieCard 
+                MovieDetails={movie}
                  poster={movie?.poster_path || movie?.profile_path} 
                  title={movie?.title || movie?.original_name}
               />
