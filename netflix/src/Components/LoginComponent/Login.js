@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import { language } from '../utils/languageConstants';
 import { auth } from '../utils/Firebase';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faEyeSlash, faGlobe } from "@fortawesome/free-solid-svg-icons";
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,12 +16,16 @@ const Login = () => {
   const [signinform, setSignInform] = useState(true);
   const [name, setName] = useState("");
   const [Message,setErrorMessage]=useState("")
+  const [showpassword,setShowpassword]=useState(false)
  
    const lang=useSelector((store)=>store?.language?.lang)
+   const navigate= useNavigate()
   const handleSignInform = () => {
     setSignInform(!signinform);
   };
-   const navigate= useNavigate()
+    const handlePassword=()=>{
+      setShowpassword(!showpassword)
+    }
    
 const handleSubmitform = (e) => {
   e.preventDefault();
@@ -78,13 +82,22 @@ const handleSubmitform = (e) => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <input
-          className="my-4 w-full p-4 bg-gray-600"
-          type="password"
-          placeholder={language[lang].placeholderpassword}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="relative">
+  <input
+    className="my-4 w-full p-4 bg-gray-600"
+    type={showpassword ? "text" : "password"}
+    placeholder={language[lang].placeholderpassword}
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+  />
+  <button
+    className="absolute top-1/2 transform -translate-y-1/2 right-4 text-gray-400"
+    onClick={handlePassword}
+  >
+    <FontAwesomeIcon icon={showpassword ? faEyeSlash : faEye} />
+  </button>
+</div>
+
           <p className="text-red-500 font-bold text-lg py-2">{Message}</p>
         <button className="py-4 my-6 bg-red-700 w-full rounded-lg" onClick={handleSubmitform} type="submit">
           {signinform ? language[lang].SignIn :language[lang].Signup}
